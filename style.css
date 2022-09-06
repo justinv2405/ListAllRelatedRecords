@@ -1,0 +1,18 @@
+:root {
+  --dl-color-gray-black: #000000;
+  --dl-space-space-fiveunits: 0px;
+  --dl-space-space-tripleunit: 24px;
+}
+.teleport-show {
+  display: flex !important;
+}
+.list-item {
+  display: list-item;
+}
+.button {
+  color: var(--dl-color-gray-black);
+  display: inline-block;
+  padding: 0.1px 14px 0.1px;
+  margin-left: 5%;
+  border-radius: 6px;
+}

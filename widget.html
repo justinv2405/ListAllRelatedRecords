@@ -1,0 +1,173 @@
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta property="og:title" content="Landing Page" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6 
+      {  margin: 0;  padding: 0;}button,input,optgroup,select,textarea 
+      {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select 
+      {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] 
+      {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner 
+      {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus 
+      {  outline: 1px dotted ButtonText;}a 
+      {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Raleway;
+        font-size: 13px;
+      }
+
+      body {
+        font-weight: 300;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 2.5;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+      html {
+      scroll-behavior: smooth;
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://live.zwidgets.com/js-sdk/1.1/ZohoEmbededAppSDK.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="./style.css" />
+    <script>
+      var records_list = [];
+      let content = "";
+      ZOHO.embeddedApp.on("PageLoad",function(data){
+        var id = data.EntityId, module = data.Entity;
+        ZOHO.CRM.API.getRelatedRecords({Entity:module,RecordID:id,RelatedList:"Location_of_Risk_12",page:1,per_page:200})
+          .then(function(records){
+          for (let i = 0; i < records.data.length; i++){
+            text = records.data[i];
+            records_list.push(text);
+            ind = "Location of Risk " + String(Number(i) +1);
+            postalCode = text.Postal_Code;
+            Location_of_risk = text.Location_of_risk;
+            Block = text.Block;
+            Block_Group = text.Block_Group;
+            House_No = text.House_No;
+            Floor_No = text.Floor_No;
+            Unit_No = text.Unit_No;
+            Street_Name = text.Street_Name;
+            Building_Name = text.Building_Name;
+            Country = text.Country;
+            console.log(text);
+            var url = 'https://crmsandbox.zoho.com/crm/org747445593/tab/CustomModule3/'+text.id+'/edit?layoutId=4820334000000321689';
+            content += '<div id="inspiration" class="home-features"><h2 class="home-content">'+ind+'<a href="'+url+'" target="_blank" rel="noreferrer noopener" class="home-link button"> Edit </a> </h2> <div class="home-features1">';
+
+            if(postalCode == null){
+              postalCode = " ";
+            }
+            if(Location_of_risk == null){
+              Location_of_risk = " ";
+            }
+            if(Block == null){
+              Block = " ";
+            }
+            if(Block_Group == null){
+              Block_Group = " ";
+            }
+            if(House_No == null){
+              House_No = " ";
+            }
+            if(Floor_No == null){
+              Floor_No = " ";
+            }
+            if(Unit_No == null){
+              Unit_No = " ";
+            }
+            if(Street_Name == null){
+              Street_Name = " ";
+            }
+            if(Building_Name == null){
+              Building_Name = " ";
+            }
+            if( Country == null){
+              Country = " ";
+            }
+            content += '<div class="home-container1"><span class="home-text">Postal Code :  '+postalCode+'</span></div>';
+            content += '<div class="home-container1"><span class="home-text">Location of risk :  '+Location_of_risk+'</span></div>';
+            content += '<div class="home-container1"><span class="home-text">Block :  '+Block+'</span></div>';
+            content += '<div class="home-container1"><span class="home-text">Block Group :  '+Block_Group+'</span></div>';
+            content += '<div class="home-container1"><span class="home-text">House No :  '+House_No+'</span></div>';
+            content += '<div class="home-features2"><div class="home-container1"><span class="home-text">Floor No :  '+Floor_No+'</span>';
+            content += '<div class="home-container1"><span class="home-text">Unit No :  '+Unit_No+'</span></div>';
+            content += '<div class="home-container1"><span class="home-text">Street Name :  '+Street_Name+'</span></div>';
+            content += '<div class="home-container1"><span class="home-text">Country :  '+Country+'</span></div>';
+            content += '<div class="home-container1"><span class="home-text">Building Name :  '+Building_Name+'</span></div></div></div></div>';
+    
+            content += '<div id="inspiration2" class="home-features"><h2 class="home-content">'+ind+'-Property Insured/Sum Insured</h2><div class="home-features1">';
+            
+            Amount = text.Amount;
+            Amount_2 = text.Amount_2;
+            Amount_3 = text.Amount_3;
+            Amount_4 = text.Amount_4;
+            Amount_5 = text.Amount_5;
+            Amount_6 = text.Amount_6;
+            Description_6 = text.Description_6;
+            if(Amount == null){
+              Amount = 0;
+            }
+            if(Amount_2 == null){
+              Amount_2 = 0;
+            }
+            if(Amount_3 == null){
+              Amount_3 = 0;
+            }
+            if(Amount_4 == null){
+              Amount_4 = 0;
+            }
+            if(Amount_5 == null){
+              Amount_5 = 0;
+            }
+            if(Amount_6 == null){
+              Amount_6 = 0;
+            }
+            if(Description_6 == null){
+              Description_6 = " ";
+            }
+            content += '<div class="home-container1"><span class="home-text">Description: On Buildings (Excluding Foundation) </span></div>';
+            content += '<div class="home-container1"><span class="home-text">Description: On Renovation Furniture, Fixtures & Fittings </span></div>';
+            content += '<div class="home-container1"><span class="home-text">Description: On Office Equipment and Business Contents </span></div>';
+            content += '<div class="home-container1"><span class="home-text">Description: On Plants & Machinery  </span></div>';
+            content += '<div class="home-container1"><span class="home-text">Description: On Stock in Trade  </span></div>';
+            content += '<div class="home-container1"><span class="home-text">Description: '+Description_6+' </span></div>';
+            content += '<div class="home-features2"><div class="home-container1"><span class="home-text">Amount: '+Amount+'  </span></div>';
+            content += '<div class="home-container1"><span class="home-text">Amount: '+Amount_2+' </span></div>';
+            content += '<div class="home-container1"><span class="home-text">Amount: '+Amount_3+' </span></div>';
+            content += '<div class="home-container1"><span class="home-text">Amount: '+Amount_4+' </span></div>';
+            content += '<div class="home-container1"><span class="home-text">Amount: '+Amount_5+' </span></div>';
+            content += '<div class="home-container1"><span class="home-text">Amount: '+Amount_6+' </span></div>';
+            content += '</div></div>';
+          }
+          document.getElementById('content').innerHTML = content;
+        });
+    });
+    ZOHO.embeddedApp.init();
+    </script>
+  </head>
+  <body>
+    <div style="margin-left:2%;border:3px">
+      <link href="./home.css" rel="stylesheet">
+      <div class="home-container" id="content">
+      </div>
+    </div>
+  </div>
+  </form>
+  </body>
+</html>
